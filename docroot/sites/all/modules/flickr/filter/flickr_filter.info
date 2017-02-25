@@ -1,13 +1,13 @@
 name = Flickr Filter
-description = Adds a filter to insert Flickr photos and sets into content.
-dependencies[] = flickr
-package = Flickr
+description = A text filter to insert Flickr photos and sets into content.
 core = 7.x
+package = Flickr
+configure = admin/config/content/formats
+dependencies[] = flickr
 
-files[] = flickr_filter.module
-; Information added by drupal.org packaging script on 2013-03-13
-version = "7.x-1.0+8-dev"
+; Information added by Drupal.org packaging script on 2015-08-06
+version = "7.x-1.8"
 core = "7.x"
 project = "flickr"
-datestamp = "1363194200"
+datestamp = "1438860137"
 
