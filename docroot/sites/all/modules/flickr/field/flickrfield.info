@@ -1,0 +1,17 @@
+name = Flickr Field
+description = Flickr field to insert Flickr images into content.
+core = 7.x
+package = Flickr
+
+dependencies[] = field
+dependencies[] = flickr
+
+files[] = flickrfield.install
+files[] = flickrfield.module
+
+; Information added by drupal.org packaging script on 2013-03-13
+version = "7.x-1.0+8-dev"
+core = "7.x"
+project = "flickr"
+datestamp = "1363194200"
+
