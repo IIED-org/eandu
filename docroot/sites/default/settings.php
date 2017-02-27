@@ -271,9 +271,9 @@ $drupal_hash_salt = 'Y-tl0AXzXuuGrrMtkQR8UbBxpqeMwPgA60DpeX3n3xU';
 # $base_url = 'http://www.example.com';  // NO trailing slash!
 
 /* Uncomment next three lines to add base_url after DNS update */
-# if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] === 'prod') { 
-#  $base_url = 'https://www.environmentandurbanization.org';
-# }
+if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] === 'prod') { 
+  $base_url = 'https://www.environmentandurbanization.org';
+}
 
 /**
  * PHP settings:
