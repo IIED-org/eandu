@@ -1,0 +1,7 @@
+name: eandu
+recipe: acquia
+config:
+  acli_version: latest
+  ah_application_uuid: 39244f42-3f90-43b4-bb2f-cbbc41a49592
+  ah_site_group: eandu
+  php: '7.4'
