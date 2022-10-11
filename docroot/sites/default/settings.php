@@ -539,11 +539,11 @@ if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/eandu/eandu-settings.inc');
 }
 
-// if (isset($conf['memcache_servers'])) {
-//   $conf['cache_backends'][] = './sites/all/modules/memcache/memcache.inc';
-//   $conf['cache_default_class'] = 'MemCacheDrupal';
-//   $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
-// }
+if (isset($conf['memcache_servers'])) {
+  $conf['cache_backends'][] = './sites/all/modules/memcache/memcache.inc';
+  $conf['cache_default_class'] = 'MemCacheDrupal';
+  $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+}
 
 // <DDSETTINGS>
 // Please don't edit anything between <DDSETTINGS> tags.
