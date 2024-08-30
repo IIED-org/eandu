@@ -84,7 +84,7 @@ function print_pdf_wkhtmltopdf_print_pdf_generate($html, $meta, $paper_size = NU
   $descriptor = array(
     0 => array('pipe', 'r'),
     1 => array('pipe', 'w'),
-    2 => array('pipe', 'a'),
+    2 => array('pipe', 'w'),
   );
   $cmd = '"' . realpath($pdf_tool[1]) . "\" -q --page-size $paper_size --orientation $page_orientation --dpi $dpi $wkhtmltopdf_options $html_input_parameter -";
 
