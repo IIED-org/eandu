@@ -1,8 +1,25 @@
 name: eandu
-recipe: acquia
+recipe: drupal7
 config:
-  acli_version: latest
-  ah_application_uuid: 39244f42-3f90-43b4-bb2f-cbbc41a49592
-  ah_site_group: eandu
   php: '8.1'
   drush: '8.4.10'
+  webroot: docroot
+proxy:
+  mailhog:
+    - mail.eandu.lndo.site
+services:
+  database:
+    creds:
+      user: database
+      password: database
+      database: database
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+    portforward: true
+tooling:
+  drush:
+    service: appserver
+    cmd:
+      - 'drush --root=/app/docroot'
