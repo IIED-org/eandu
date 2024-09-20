@@ -2,13 +2,14 @@ name: eandu
 recipe: drupal7
 config:
   php: '8.1'
-  drush: '8.4.10'
+  drush: '8.4.12'
   webroot: docroot
 proxy:
   mailhog:
     - mail.eandu.lndo.site
 services:
   database:
+    type: mariadb:10.11
     creds:
       user: database
       password: database
