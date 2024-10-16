@@ -200,27 +200,6 @@
  *   );
  * @endcode
  */
-$databases['default']['default'] = [
-  'database' => 'eandu_drupal',
-  'username' => 'eandu_user',
-  'password' => 'ea2605_ws',
-  'host' => 'localhost',
-  'port' => '',
-  'driver' => 'mysql',
-  'prefix' => '',
-];
-
-if (getenv('LANDO_INFO') !== FALSE) {
-  $databases['default']['default'] = [
-    'database' => 'database',
-    'username' => 'database',
-    'password' => 'database',
-    'host' => 'database',
-    'port' => '3306',
-    'driver' => 'mysql',
-    'prefix' => '',
-  ];
-}
 
 /**
  * Access control for update.php script.
@@ -546,6 +525,10 @@ $conf['404_fast_html'] = '<html xmlns="http://www.w3.org/1999/xhtml"><head><titl
  *
  * Keep this code block at the end of this file to take full effect.
  */
-if (getenv('LANDO_INFO') !== FALSE && file_exists('docroot/sites/default/settings.lando.php')) {
-  include 'docroot/sites/default/settings.lando.php';
+
+if (file_exists(DRUPAL_ROOT . '/' . conf_path() . '/settings.local.php')) {
+  include DRUPAL_ROOT . '/' . conf_path() . '/settings.local.php';
+}
+elseif (getenv('LANDO_INFO') !== FALSE && file_exists(DRUPAL_ROOT . '/' . conf_path() . '/settings.lando.php')) {
+  include DRUPAL_ROOT . '/' . conf_path() . '/settings.lando.php';
 }

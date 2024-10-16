@@ -3,7 +3,7 @@
 /**
  * Lando database credentials.
  */
-$databases['default']['default'] = array (
+$databases['default']['default'] = [
   'database' => 'database',
   'username' => 'database',
   'password' => 'database',
@@ -11,5 +11,4 @@ $databases['default']['default'] = array (
   'port' => '3306',
   'driver' => 'mysql',
   'prefix' => '',
-  'collation' => 'utf8mb4_general_ci',
-);
+];
