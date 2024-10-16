@@ -3,3 +3,10 @@ docroot/files
 docroot/sites/*/files
 docroot/sites/*/private
 .DS_Store
+
+# IDE files
+.idea
+
+# Database dumps
+*.sql
+*.sql.gz

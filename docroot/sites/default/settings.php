@@ -200,21 +200,6 @@
  *   );
  * @endcode
  */
-$databases = array (
-  'default' => 
-  array (
-    'default' => 
-    array (
-      'database' => 'eandu_drupal',
-      'username' => 'eandu_user',
-      'password' => 'ea2605_ws',
-      'host' => 'localhost',
-      'port' => '',
-      'driver' => 'mysql',
-      'prefix' => '',
-    ),
-  ),
-);
 
 /**
  * Access control for update.php script.
@@ -269,11 +254,6 @@ $drupal_hash_salt = 'Y-tl0AXzXuuGrrMtkQR8UbBxpqeMwPgA60DpeX3n3xU';
  * for you.
  */
 # $base_url = 'http://www.example.com';  // NO trailing slash!
-
-/* Uncomment next three lines to add base_url after DNS update */
-if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] === 'prod') { 
-  $base_url = 'https://www.environmentandurbanization.org';
-}
 
 /**
  * PHP settings:
@@ -530,17 +510,20 @@ $conf['404_fast_html'] = '<html xmlns="http://www.w3.org/1999/xhtml"><head><titl
  */
 # $conf['allow_authorize_operations'] = FALSE;
 
+/**
+ * Load local development override configuration, if available.
+ *
+ * Use settings.local.php to override variables on secondary (staging,
+ * development, etc) installations of this site. Typically used to disable
+ * caching, JavaScript/CSS compression, re-routing of outgoing emails, and
+ * other things that should not happen on development and testing sites.
+ *
+ * Keep this code block at the end of this file to take full effect.
+ */
 
-// On Acquia Cloud, this include file configures Drupal to use the correct
-// database in each site environment (Dev, Stage, or Prod). To use this
-// settings.php for development on your local workstation, set $db_url
-// (Drupal 5 or 6) or $databases (Drupal 7 or 8) as described in comments above.
-if (file_exists('/var/www/site-php')) {
-  require('/var/www/site-php/eandu/eandu-settings.inc');
+if (file_exists(DRUPAL_ROOT . '/' . conf_path() . '/settings.local.php')) {
+  include DRUPAL_ROOT . '/' . conf_path() . '/settings.local.php';
 }
-
-if (isset($conf['memcache_servers'])) {
-  $conf['cache_backends'][] = './sites/all/modules/memcache/memcache.inc';
-  $conf['cache_default_class'] = 'MemCacheDrupal';
-  $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+elseif (getenv('LANDO_INFO') !== FALSE && file_exists(DRUPAL_ROOT . '/' . conf_path() . '/settings.lando.php')) {
+  include DRUPAL_ROOT . '/' . conf_path() . '/settings.lando.php';
 }
